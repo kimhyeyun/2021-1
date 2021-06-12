@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+.titleArea{
+
+    margin: 20px auto 40px;
+    text-align: left;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+}
+ 
+.titleArea h2 {
+    margin-right: 4%;
+    padding-left: 40px;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0px;
+    font-family: 'Rufina','Jeju Myeonjo',serif;
+    vertical-align: middle;
+}
+
+.titleArea h2:before{
+	content:"";
+	position: absolute;
+	background-color: #898989;
+	width: 20px;
+	height: 1px;
+	left: 0px;
+	top: 13px;
+}
+
+.detailArea{
+	font-size: 0;
+	line-height: 0;
+	letter-spacing: 0;
+	text-align: center;
+	padding: 0 0 20px 0;	
+}
+
+#imgArea{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	width: 45%;
+}
+
+img{
+	max-width: 100%;
+}
+
+#infoArea{
+	position: relative;
+	display: inline-block;
+	width: 55%;
+	padding: 20px 0 0 50px;
+	box-sizing: border-box;
+	text-align: left;
+	line-height: 16px;
+	letter-spacing: 0.3px;
+}
+
+table{
+	width: 100%;
+	border: 0;
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin-top: 50px;
+}
+
+tbody{
+	display: table-row-group;
+	vertical-align: middle;
+}
+
+tr{
+	display: table-row;;
+}
+
+tr:first-child {
+	padding: 5px 0 25px;
+	font-weight: 300;
+	letter-spacing: 1.5px;
+}
+
+td{
+	padding: 5px 0 25px;
+	font-weight: 300;
+	letter-spacing: 1.5px;
+}
+
+.optTit{
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	margin-right: 10px;
+}
+
+.optCon{
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+#cartbtn {
+	float:right;
+	text-align:center;
+	width:130px;
+	height:20px;
+	display:inline-block;
+	vertical-align:bottom;
+	padding:11px 0 ;
+	border: 1px solid #c58876;
+	color: #fff;
+	border-radius: 2px;
+	background: #c58876;
+	font-size: 12px;
+}
+
+#removebtn {
+	float:right;
+	text-align:center;
+	width:130px;
+	height:20px;
+	display:inline-block;
+	vertical-align:bottom;
+	padding:11px 0 ;
+	margin-right: 10px;
+	border: 1px solid #c58876;
+	color: #fff;
+	border-radius: 2px;
+	background: #c58876;
+	font-size: 12px;
+}

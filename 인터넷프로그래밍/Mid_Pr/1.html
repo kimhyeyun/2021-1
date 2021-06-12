@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ifram1</title>
+    </head>
+    <body style="text-align:center;">
+        <script>
+            var floor = prompt("출력하려는 삼각형의 층수를 입력하세요.","");
+            for(var i=0;i<floor;i++){
+                for(var l=floor;l>i;l--){
+                    document.write("---");
+                }
+                document.write("<br>")
+            }
+            document.write("<br>");
+
+            for(var i=0;i<floor;i++){
+                for(var j=0;j<=i;j++){
+                    document.write("---");
+                }
+                document.write("<br>");
+            }
+        </script>
+    </body>
+</html>

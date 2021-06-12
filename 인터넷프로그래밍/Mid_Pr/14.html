@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            var n = Math.floor(Math.random()*100)+1;
+            var cnt = 1;
+            function GoGame(){
+                var what = document.getElementById('num').value;
+                var c = document.getElementById('cnt');
+                var h = document.getElementById('hint');
+                if(what == n){
+                    c.value = cnt;
+                    h.value = "성공입니다.";
+                }
+                else if(what < n){
+                    c.value = cnt;
+                    h.value = "낮습니다.";
+                    cnt++;
+                }
+                else{
+                    c.value=cnt;
+                    h.value="높습니다.";
+                    cnt++;
+                }
+            }
+        </script>
+        <h1>숫자 맞추기 게임</h1>
+        <p>이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임입니다. 숫자는 1부터 100사이에 있습니다.</p>
+        숫자: <input type="text" id="num">
+        <input type="button" value="확인" onclick="GoGame()"><br><br>
+        추측횟수 : <input type="text" id="cnt">
+        힌트 : <input type="text" id="hint">
+    </body>
+</html>

@@ -1,0 +1,131 @@
+@charset "UTF-8";
+.titleArea{
+
+    margin: 20px auto 40px;
+    text-align: left;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+}
+ 
+.titleArea h2 {
+    margin-right: 4%;
+    padding-left: 40px;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0px;
+    font-family: 'Rufina','Jeju Myeonjo',serif;
+    vertical-align: middle;
+}
+
+.titleArea h2:before{
+	content:"";
+	position: absolute;
+	background-color: #898989;
+	width: 20px;
+	height: 1px;
+	left: 0px;
+	top: 13px;
+}
+
+table{
+	font-size:11px;
+	border-top: 1px solid #f3f3f3;
+	border-bottom: 1px solid #f3f3f3;
+	position: relative;
+	width: 100%;
+	border:0;
+	border-spacing: 0;
+	border-collapse: collapse;; 
+}
+
+colgroup{
+	display: table-column-group;
+}
+
+tbody{
+	display: table-row-group;
+	vertical-align: middle;
+	border-top-color: inherit;
+	border-right-color: inherit;
+	border-bottom-color: inherit;
+	border-left-color: inhert;	
+}
+
+tr{
+	display: table-row;
+}
+
+th{
+	border:0;
+	padding: 10px 0 10px 8px;
+	background: #f9f9f9;
+	vertical-align: middle;
+	font-weight: normal;
+	font-size:13px;
+	text-align:center;
+	display: table-cell;
+}
+
+td{
+	border:0;
+	padding: 10px 0 8px 10px;
+	border-bottom: 1px solid #f3f3f3;
+	vertical-align: middle;
+}
+
+input{
+	height: 26px;
+	line-height: 26px;
+	padding: 2px 8px;
+	margin-left:20px;
+	border: none;
+	background: #f3f3f3;
+	color: #6d6d6d;
+	font-size: 11px;
+	box-sizing: border-box;
+}
+
+#userPW{
+	font-family: sans-serif;
+}
+
+#infosub{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.btnmy{
+	height:40px;
+	padding-left:30px;
+	padding-right:30px;
+	box-sizing: border-box;
+	letter-spacing: 0.5px;
+	border: 1px solid #c58876;
+	background: #c58876;
+	color: #fff;
+	font-size: 12px;
+	list-style: 1;
+	border-radius: 2px;
+	margin: 0;
+}
+
+#delbtn{
+	height:40px;
+	padding-top:13px;
+	padding-bottom:13px;
+	padding-left:30px;
+	padding-right:30px;
+	box-sizing: border-box;
+	letter-spacing: 0.5px;
+	border: 1px solid #c58876;
+	background: #c58876;
+	color: #fff;
+	font-size: 12px;
+	list-style: 1;
+	border-radius: 2px;
+	margin: 0;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>3번</title>
+    </head>
+    <body>
+        <input type="button" value="add_new_row" onclick="add()">
+        <input type="button" value="delete_last_row" onclick="del()">
+        <table id="tb" border="1">
+            <thead id="h" style="background-color: green;">
+                <tr>
+                    <th>Header1</th>
+                    <th>Header2</th>
+                </tr>
+            </thead>
+        </table>
+        <script>
+            var tb = document.getElementById("tb");
+            var idx = 1;
+            function add(){
+                r = document.createElement("tr");
+                d = document.createElement("td");
+                
+                d.append("row "+idx+", cell 1");
+                r.append(d);
+
+                d = document.createElement("td");
+                
+                d.append("row "+idx+", cell 2");
+                r.append(d);
+                tb.append(r);
+                idx++;
+            }
+
+            function del(){
+                var h = document.getElementById("h");
+                var l = tb.lastElementChild;
+                if(h!=l){
+                    l.remove();
+                    idx--;
+                }
+            }
+        </script>
+    </body>
+</html>
