@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Book 객체</title>
+    </head>
+    <body>
+        <script>
+            var Book = new Array();
+            for(var i=0;i<5;i++){
+                var str = prompt("콤마(,)로 분리하면서 책제목 저자 가격 순으로 입력","");
+                var s = str.split(',');
+                var book = new Object();
+                book.title = s[0];
+                book.author = s[1];
+                book.price = s[2];
+                Book[i] = book;
+            }
+
+            for(var i =0;i<5;i++){
+                document.write(Book[i].title+', '+Book[i].author+', '+Book[i].price+"<br>")
+            }
+        </script>
+    </body>
+</html>

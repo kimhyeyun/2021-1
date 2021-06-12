@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>난수 10개 생성</title>
+</head>
+
+<body>
+    <h1>난수 10개 생성</h1>
+    <hr>
+    <script>
+        var max = 0;
+        for (var i = 0; i < 10; i++) {
+            var n = Math.floor(Math.random() * 100) + 1;
+            document.write(n + " ");
+            if(max < n)
+                max = n;
+        }
+        document.write("<hr>");
+        document.write("제일 큰 수는 "+max);
+    </script>
+</body>
+
+</html>

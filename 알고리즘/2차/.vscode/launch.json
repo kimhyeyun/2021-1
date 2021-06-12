@@ -1,0 +1,357 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "Launch brutefoce_17281",
+        "request": "launch",
+        "mainClass": "brutefoce_17281",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_17135",
+        "request": "launch",
+        "mainClass": "bruteforce_17135",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_17405",
+        "request": "launch",
+        "mainClass": "bruteforce_17405",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_17089",
+        "request": "launch",
+        "mainClass": "bruteforce_17089",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_2422",
+        "request": "launch",
+        "mainClass": "bruteforce_2422",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_2210",
+        "request": "launch",
+        "mainClass": "bruteforce_2210",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_15686",
+        "request": "launch",
+        "mainClass": "bruteforce_15686",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_17088",
+        "request": "launch",
+        "mainClass": "bruteforce_17088",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_15638",
+        "request": "launch",
+        "mainClass": "bruteforce_15638",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16637",
+        "request": "launch",
+        "mainClass": "bruteforce_16637",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch brutefoce_16943",
+        "request": "launch",
+        "mainClass": "brutefoce_16943",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16938",
+        "request": "launch",
+        "mainClass": "bruteforce_16938",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16937",
+        "request": "launch",
+        "mainClass": "bruteforce_16937",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16936",
+        "request": "launch",
+        "mainClass": "bruteforce_16936",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16924",
+        "request": "launch",
+        "mainClass": "bruteforce_16924",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16922",
+        "request": "launch",
+        "mainClass": "bruteforce_16922",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16917",
+        "request": "launch",
+        "mainClass": "bruteforce_16917",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch bruteforce_16968",
+        "request": "launch",
+        "mainClass": "bruteforce_16968",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_20327",
+        "request": "launch",
+        "mainClass": "simulation_20327",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch 시뮬레이션_20327",
+        "request": "launch",
+        "mainClass": "시뮬레이션_20327",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_1917",
+        "request": "launch",
+        "mainClass": "simulation_1917",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16236",
+        "request": "launch",
+        "mainClass": "simulation_16236",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16967",
+        "request": "launch",
+        "mainClass": "simulation_16967",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16931",
+        "request": "launch",
+        "mainClass": "simulation_16931",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_2290",
+        "request": "launch",
+        "mainClass": "simulation_2290",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_15685",
+        "request": "launch",
+        "mainClass": "simulation_15685",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_14503",
+        "request": "launch",
+        "mainClass": "simulation_14503",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_15662_re",
+        "request": "launch",
+        "mainClass": "simulation_15662_re",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_14890_re",
+        "request": "launch",
+        "mainClass": "simulation_14890_re",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_14499_re",
+        "request": "launch",
+        "mainClass": "simulation_14499_re",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16927_re",
+        "request": "launch",
+        "mainClass": "simulation_16927_re",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16926_re",
+        "request": "launch",
+        "mainClass": "simulation_16926_re",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16935_re",
+        "request": "launch",
+        "mainClass": "simulation_16935_re",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_20055_re",
+        "request": "launch",
+        "mainClass": "simulation_20055_re",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_15662",
+        "request": "launch",
+        "mainClass": "simulation_15662",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_14890",
+        "request": "launch",
+        "mainClass": "simulation_14890",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_14499",
+        "request": "launch",
+        "mainClass": "simulation_14499",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16926",
+        "request": "launch",
+        "mainClass": "simulation_16926",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch simulation_16935",
+        "request": "launch",
+        "mainClass": "simulation_16935",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch 시뮬레이션_16935",
+        "request": "launch",
+        "mainClass": "시뮬레이션_16935",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch BFS_20055",
+        "request": "launch",
+        "mainClass": "BFS_20055",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch BFS_13913_2",
+        "request": "launch",
+        "mainClass": "BFS_13913_2",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch BFS_13913",
+        "request": "launch",
+        "mainClass": "BFS_13913",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch BFS_14226",
+        "request": "launch",
+        "mainClass": "BFS_14226",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch BFS_13549",
+        "request": "launch",
+        "mainClass": "BFS_13549",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch BFS_1261",
+        "request": "launch",
+        "mainClass": "BFS_1261",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch BFS_1697",
+        "request": "launch",
+        "mainClass": "BFS_1697",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "type": "java",
+        "name": "Launch abc",
+        "request": "launch",
+        "mainClass": "abc",
+        "projectName": "2021AlgorithmStudy_e5226cac"
+      },
+      {
+        "name": "clang++ - Build and debug active file",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": true,
+        "MIMode": "lldb",
+        "preLaunchTask": "clang++ build active file"
+      }
+    ]
+  }

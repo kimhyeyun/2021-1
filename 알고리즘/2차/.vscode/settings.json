@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "queue": "cpp",
+        "utility": "cpp",
+        "__functional_base": "cpp",
+        "stack": "cpp"
+    },
+    "java.project.sourcePaths": [
+        ""
+    ]
+}

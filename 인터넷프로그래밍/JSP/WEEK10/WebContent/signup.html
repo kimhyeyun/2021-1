@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>SignUp.html</title>
+</head>
+<body>
+<h2>회원 가입 페이지 입니다. 정보를 입력해 주세요.</h2>
+<form method="post" action="signup.jsp">
+	성명 : <input type="text" name="name"><p>
+	전화번호 : <input type="text" name="phonenum"><p>
+	성별 :  남자 <input type="radio" name="sex" value="man" checked="checked">
+		   여자 <input type="radio" name="sex" value="woman"><p>
+	국적 :  <select name="country">
+			<option selected="selected" value="대한민국">대한민국</option>
+			<option value="미국">미국</option>
+			<option value="중국">중국</option>
+			<option value="일본">일본</option>
+</select><p>
+	좋아하는 취미를 선택하시오.<p>
+	영화 <input type="checkbox" name="hobby" value="영화"><br>
+	독서	<input type="checkbox" name="hobby" value="독서"><br>
+	스키	<input type="checkbox" name="hobby" value="스키"><br>
+	자전거 <input type="checkbox" name="hobby" value="자전거"><br><hr>
+	
+	<input type="submit" value="회원 가입">
+</form>
+</body>
+</html>

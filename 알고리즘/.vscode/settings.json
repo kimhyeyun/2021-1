@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "queue": "cpp",
+        "utility": "cpp",
+        "functional": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "memory": "cpp",
+        "deque": "cpp",
+        "iosfwd": "cpp",
+        "iterator": "cpp",
+        "ratio": "cpp"
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>iframe2</title>
+    </head>
+    <body>
+        <h1>메뉴를 선택하세요</h1>
+        <form id="menu">
+            <input type="checkbox" value="짜장면"> 짜장면<br>
+            <input type="checkbox" value="짬뽕"> 짬뽕<br>
+            <input type="checkbox" value="햄버거"> 햄버거<br><br>
+            <input type="button" value="주문완료" onclick="theend(this)">
+        </form>
+        <script>
+            function theend(self){
+                var str="";
+                var p = document.createElement("p");
+                var c = document.getElementById("menu");
+                for(var i=0;i<c.length;i++){
+                    if(c[i].checked){
+                        str += c[i].value+", ";
+                    }
+                }
+                p.innerHTML=str.substr(0,str.length-2)+"을 주문하였습니다.";
+                self.parentElement.append(p);
+            }
+        </script>
+    </body>
+</html>
