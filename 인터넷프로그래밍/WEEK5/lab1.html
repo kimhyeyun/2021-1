@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            방문시간
+        </title>
+    </head>
+    <body>
+        <h3>오전이면 lightskyblue, 오후이면 orange 배경</h3>
+        <hr>
+        <script>
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            if(0<=h && h <12)
+                document.querySelector('body').style.backgroundColor = 'lightskyblue';
+            else    
+                document.querySelector('body').style.backgroundColor = 'orange';
+            document.write("현재 시간: "+h+"시,"+m+"분,"+s+"초");
+        </script>
+    </body>
+</html>

@@ -1,6 +1,0 @@
-package cart;
-
-public class UserProduct {
-	private String userid;
-	private int pid;
-}

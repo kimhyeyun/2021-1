@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>4번</title>
+        <style>
+            p{
+                background-color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>시간을 보여주는 영역입니다.</h1>
+        <h>시계를 클릭하면 시계가 멈추고 다시 클릭하면 가기 시작합니다.</h>
+        <hr>
+        <input type="text" id="clock" onclick="stopTime()">
+        <hr>
+        <h1>중간고사 시험 유의사항</h1>
+        <hr>
+        <div id="d" onclick="addp()">
+            <p>A. 결과물은 1.html, 2.html, 3.html 파일을 elearing 시스템의 중간고사 제출 항목에 제출</p>
+        <div>
+
+        <script>
+            GoTime();
+            var flag = true;
+
+            function showTime(){
+                var t = document.getElementById("clock");
+                var time = new Date();
+                var str = time.toLocaleTimeString();
+                t.value = str;
+            }
+
+            function GoTime(){
+                showTime();
+                str = setInterval(showTime,1000);
+            }
+
+            function stopTime(){
+                if(flag == true){
+                    clearInterval(str);
+                    document.getElementById("clock").style.backgroundColor = "lightgray";
+                    flag = false;
+                }
+                else{
+                    GoTime();
+                    document.getElementById("clock").style.backgroundColor = "white";
+                    flag = true;
+                }
+            }
+
+            function addp(){
+                var str = prompt("중간고사 시험시 유의사항을 입력하세요.", "");
+                var p = document.createElement("p");
+                p.innerHTML = str;
+                var u = document.getElementById("d");
+                d.append(p);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>섭시온도->화씨 변환</title>
+    </head>
+    <body>
+        <h1>4주 이론 제출 과제</h1>
+        <hr>
+        <button style="font-size: 20px;" onclick="myFunction()">변환</button>
+        <script>
+            function myFunction(){
+                var ret = prompt("섭씨 온도를 입력하세요");
+                if(ret == null){
+                    alert("취소되었습니다.");
+                }
+                else if(ret == ""){
+                    alert("값이 입력되지 않았습니다.");
+                }
+                else{
+                    var f = ret*1.8+32;
+                    alert(ret+ "°C 는 "+f+"°F 입니다.");
+                }
+            }
+        </script>
+    </body>
+</html>

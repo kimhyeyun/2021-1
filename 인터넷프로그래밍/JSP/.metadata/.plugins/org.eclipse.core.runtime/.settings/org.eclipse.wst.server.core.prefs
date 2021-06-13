@@ -1,3 +1,0 @@
-eclipse.preferences.version=1
-module-start-timeout=300000
-runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<runtimes>\n  <runtime id\="Apache Tomcat v8.5" location\="/Users/yun/Desktop/YUN/2021-1/\u110B\u1175\u11AB\u1110\u1165\u1102\u1166\u11BA\u1111\u1173\u1105\u1169\u1100\u1173\u1105\u1162\u1106\u1175\u11BC/JSP/apache-tomcat-8.5.64" name\="Apache Tomcat v8.5" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.85" timestamp\="0" vm-install-id\="com.oracle.java.15.0.2.jdk" vm-install-type-id\="org.eclipse.jdt.internal.launching.macosx.MacOSXType"/>\n</runtimes>\n

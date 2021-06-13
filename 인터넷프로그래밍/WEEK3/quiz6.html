@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>display 속성</title>
+    <style>
+        .menubar li {
+            display: inline;
+            background-color: yellow;
+            border: 1px solid;
+            border-color: red;
+            margin: 0;
+            padding: .5em;
+        }
+
+        #one {
+            background-color: cyan;
+            width: 200px;
+            height: 50px;
+        }
+
+        #two {
+            position: static;
+            background-color: yellow;
+            width: 200px;
+            height: 50px;
+        }
+
+        #three {
+            background-color: lightgreen;
+            width: 200px;
+            height: 50px;
+        }
+
+        #one_2 {
+            background-color: cyan;
+            width: 200px;
+            height: 50px;
+        }
+
+        #two_2 {
+            position: relative;
+            left: 30px;
+            background-color: yellow;
+            width: 200px;
+            height: 50px;
+        }
+
+        #three_2 {
+            background-color: lightgreen;
+            width: 200px;
+            height: 50px;
+        }
+
+        #two_3{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background-color: yellow;
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="menubar">
+        <li><a href="#">홈으로</a></li>
+        <li><a href="#">회사 소개</a></li>
+        <li><a href="#">제품 소개</a></li>
+        <li><a href="#">질문과 대답</a></li>
+        <li><a href="#">연락처</a></li>
+    </ul>
+
+    <p id="one">block #1</p>
+    <div id="two">
+        block #2<br />
+        position:static;<br />
+    </div>
+    <p id="three">block #3</p>
+
+    <p id="one_2">block #4</p>
+    <div id="two_2">
+        block #5<br />
+        position:static;<br />
+    </div>
+    <p id="three_2">block #6</p>
+
+    <p id="one_2">block #7</p>
+    <div id="two_3">
+        block #8<br />
+        position:static;<br />
+    </div>
+    <p id="three_2">block #9</p>
+
+    <p>block #10</p>
+    <p id="two">
+`block #10
+    </p>
+    
+
+</body>
+
+</html>

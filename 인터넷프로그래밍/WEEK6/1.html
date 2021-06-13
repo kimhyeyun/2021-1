@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Book 객체 배열 만들기
+        </title>
+    </head>
+    <body>
+        <h2>Book 객체 배열 만들기</h2>
+        <hr>
+        <script>
+            var Books = new Array();
+
+            for(i=0;i<5;i++){
+                var input = prompt("콤마(,)로 분리 하면서 책제목 저자 가격순으로 입력");
+                var str = input.split(",");
+                var book = new Object();
+                book.title = str[0];
+                book.author = str[1];
+                book.price = str[2];
+                Books[i] = book;
+            }
+
+            for(i=0;i<5;i++){
+                document.write(Books[i].title+",");
+                document.write(Books[i].author+".");
+                document.write(Books[i].price+"<br>");
+            }
+        </script>
+    </body>
+</html>
