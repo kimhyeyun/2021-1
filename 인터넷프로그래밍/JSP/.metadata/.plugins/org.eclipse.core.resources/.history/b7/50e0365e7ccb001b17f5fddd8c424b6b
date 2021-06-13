@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+.titleArea {
+	margin: 20px auto 40px;
+	text-align: left;
+	font-size: 0;
+	line-height: 0;
+	letter-spacing: 0;
+}
+
+.titleArea>h2 {
+	margin-right: 4%;
+	padding-left: 40px;
+	position: relative;
+	box-sizing: border-box;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 26px;
+	letter-spacing: 0px;
+	font-family: 'Rufina', 'Jeju Myeonjo', serif;
+	vertical-align: middle;
+}
+
+.titleArea>h2:before {
+	content: "";
+	position: absolute;
+	background-color: #898989;
+	width: 20px;
+	height: 1px;
+	left: 0px;
+	top: 13px;
+}
+
+table {
+	border-top: 1px solid #f3f3f3;
+	border-bottom: 1px solid #f3f3f3;
+	position: relative;
+	width: 100%;
+	border: 0;
+	border-spacing: 0;
+	border-collapse: collapse;
+	vertical-align: middle;
+}
+
+tbody {
+	display: table-row-group;
+	border-top-color: inherit;
+	border-right-color: inherit;
+	border-bottom-color: inherit;
+	border-left-color: inherit;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-top-color: inherit;
+	border-right-color: inherit;
+	border-bottom-color: inherit;
+	border-left-color: inherit;
+}
+
+tbody th {
+	width: 90px;
+	padding: 10px 0 10px 8px;
+	background: #f9f9f9;
+	vertical-align: middle;
+	font-weight: normal;
+}
+
+td {
+	border-bottom: 1px solid #f3f3f3;
+	vertical-align: left;
+	padding: 10px 0 10px 15px;
+}
+
+td th {
+	display: table-cell;
+}
+
+.etcArea {
+	text-align: right;
+	padding-right: 30px;
+}
+
+.etcArea .etcArea>li {
+	display: inline-block;
+	padding: 0px 20px 10px 30px;
+	vertical-align: top;
+	line-height: 22px;
+	color: #555;
+	list-style: none;
+}
+
+strong {
+	letter-spacing: 1px;
+}
+
+.txtNum {
+	font-size: 11px;
+}
+
+.detail {
+	padding: 50px 20px 40px;
+	border-top: 1px solid #f3f3f3;
+	word-break: break-all;
+	line-height: 22px;
+	text-align: left;
+}
+
+.view {
+	word-wrap: break-word;
+}
+
+#removebtn {
+	float: right;
+	text-align: center;
+	width: 130px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: bottom;
+	padding: 11px 0;
+	margin-right: 10px;
+	margin-top: 10px;
+	border: 1px solid #c58876;
+	color: #fff;
+	border-radius: 2px;
+	background: #c58876;
+	font-size: 12px;
+}
+
+form {
+	display: block;
+	margin-inline-start: 2px;
+	margin-inline-end: 2px;
+	padding-block-start: 0.35em;
+	padding-block-end: 0.625em;
+	padding-inline-start: 0.75em;
+	padding-inline-end: 0.75em;
+	min-width: min-content;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#cdiv {
+	margin: 30px 0 0;
+	padding: 20px;
+	background: #f9f9f9;
+}
+
+#cul {
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+}
+
+#cul>li {
+	position: relative;
+	margin: 0 0 10px;
+	background: #f9f9f9;
+	border-radius: 8px;
+}
+
+.commentTop {
+	overflow: hidden;
+	padding: 13px 20px 8px;
+}
+
+.name {
+	float: left;
+	font-weight: 300;
+}
+
+.date {
+	margin: 1px 10px 0 10px;
+	font-size: 10px;
+	color: #afafaf;
+}
+
+.btn {
+	position: absolute;
+	top: 8px;
+	right: 13px;
+}
+
+.btn>a {
+	margin-left: 3px;
+	display: inline-block;
+	padding: 0 12px;
+	height: 26px;
+	line-height: 28px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: normal;
+	letter-spacing: 1px;
+	vertical-align: top;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+
+.comment_div {
+	clear: both;
+	padding: 0px 10px 0px;
+	word-break: break-all;
+}
+#clist{
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+#cdiv {
+	color: #6d6d6d;
+	background: #efe9e8;
+}
+
+#fp {
+	display: block;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+}
+
+#comment_name {
+	width: 135px;
+	margin: 0 10px 0 9px;
+	height: 26px;
+	line-height: 26px;
+	padding: 2px 8px;
+	border: none;
+	background: #f3f3f3;
+	color: #6d6d6d;
+	font-size: 11px;
+	box-sizing: border-box;
+}
+
+.comment_view {
+	position: relative;
+	margin: 10px 0 0;
+	padding: 0 95px 0 0;
+}
+
+#comment {
+	width: 100%;
+	height: 44px;
+	padding: 2px 2px 2px 4px;
+	border: 1px solid #f3f3f3;
+	line-height: 20px;
+}
+
+#csub {
+	position: absolute;	
+	top: 0;
+	right: 0;
+	display: inline-block;
+	width: 80px;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	font-size: 11px;
+	letter-spacing: 1px;
+	vertical-align: middle;
+	box-sizing: border-box;
+	font-weight: normal;
+	border-radius: 2px;
+	border: 1px solid #c58876;
+	background: #c58876;
+	color: #fff;
+}

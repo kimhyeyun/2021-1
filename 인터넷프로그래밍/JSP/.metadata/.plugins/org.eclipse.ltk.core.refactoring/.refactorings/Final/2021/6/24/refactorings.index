@@ -1,0 +1,34 @@
+1623330712414	Move 10 resources to 'lib'
+1623332359427	Rename resource 'memberInsert.jsp'
+1623333798419	Move 5 resources to 'WebContent'
+1623334543636	Delete element
+1623334699285	Move 'logout.jsp' to 'WebContent'
+1623334731872	Rename resource 'login.jsp'
+1623336999127	Move compilation unit
+1623343705547	Delete element
+1623344217710	Move 'addProduct.jsp' to 'WebContent'
+1623387893231	Delete elements
+1623389066361	Delete elements
+1623390078524	Delete element
+1623394308872	Delete element
+1623394429661	Rename type 'userInfoDelete'
+1623394876508	Delete element
+1623396199772	Delete element
+1623396211861	Delete element
+1623396417741	Delete element
+1623396446242	Rename type 'userjoinServlet'
+1623402830700	Delete element
+1623403069935	Delete element
+1623404560079	Delete element
+1623406634860	Rename resource 'ReviewMapper.xml'
+1623406765905	Rename package 'review'
+1623406932974	Rename resource 'review.css'
+1623406938526	Rename resource 'review.jsp'
+1623407833156	Rename resource 'QAMapper.xml'
+1623409413078	Rename resource 'reviewdetail.css'
+1623490512991	Rename resource 'reviewWriter.jsp'
+1623490552543	Rename resource 'writereview.css'
+1623490860162	Rename resource 'qaWriter.jsp'
+1623500705075	Move compilation unit
+1623500720863	Move compilation unit
+1623500726706	Move compilation unit

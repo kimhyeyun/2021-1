@@ -1,0 +1,52 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="qa.QaDAO"%>
+<%@page import="qa.Qa"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DELET QNA</title>
+</head>
+<body>
+
+<%
+	String userID = null;
+	if(session.getAttribute("userID") != null){
+		userID = (String) session.getAttribute("userID");
+	}
+	
+	int qID = -1;
+	if(request.getParameter("qID")!=null)
+		qID = Integer.parseInt(request.getParameter("qID"));
+	
+	QaDAO qadao = new QaDAO();
+	Qa q = qadao.findqa(qID);
+	
+	if(userID == null){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('권환이 없습니다.')");
+		script.println("history.back()");
+		script.println("</script>");
+	}
+	
+	if(userID.equals(q.getUserID()) || userID.equals("admin")){
+		qadao.Rmqa(q);
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('삭제했습니다.')");
+		script.println("location.href='qna.jsp'");
+		script.println("</script>");
+	}
+	else{
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('권환이 없습니다.')");
+		script.println("history.back()");
+		script.println("</script>");
+	}
+%>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.CartMapper">
+	<insert id="cartInsert" parameterType="CartDTO">
+		INSERT INTO cart VALUES(#{userid}, #{pid}, #{pname}, #{pprice}, #{pimage})
+	</insert>
+	
+	<delete id="cartDelete" parameterType="UserProduct">
+		DELETE FROM cart WHERE userid = #{userid} AND pid = #{pid}
+	</delete>
+	
+	<update id="cartCntUpdate" parameterType="UserProduct">
+		UPDATE cart SET cnt = cnt + 1 WHERE userid = #{userid} AND pid = #{pid}
+	</update>
+	
+	<select id="cartSearchProduct" parameterType="UserProduct" resultType="int">
+		SELECT COUNT(*) FROM cart WHERE userid = #{userid} AND pid =#{pid}
+	</select>
+	
+	
+	<select id="cartSearchAll" parameterType="String" resultType="CartDTO">
+		SELECT * FROM cart WHERE userid = #{userid}
+	</select>
+	
+	<select id="carttotalCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM cart WHERE userid = #{userid}
+	</select>
+</mapper>

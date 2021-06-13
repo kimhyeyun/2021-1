@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.UserMapper">
+	<insert id="userInsert" parameterType="UserDTO">
+		INSERT INTO user VALUES(#{userid}, #{userpw}, #{username}, #{userphone},0);
+	</insert>
+	
+	<select id="getById" parameterType="String" resultType="UserDTO">
+		SELECT * FROM user WHERE userid = #{userid}
+	</select>
+	
+	<delete id="userDelete" parameterType="String">
+		DELETE FROM user WHERE userid = #{userid}
+	</delete>
+	
+	<update id="userUpdate" parameterType="UserDTO">
+		UPDATE user SET userpw = #{userpw}, username = #{username}, userphone = #{userphone} Where userid = #{userid}
+	</update>
+	
+	<select id="login" parameterType="String" resultType="String">
+		SELECT userpw FROM user WHERE userid = #{userid} 
+	</select>
+	
+	<select id="isadmin" parameterType="String" resultType="UserDTO">
+		SELECT * FROM user WHERE userid = #{userid}
+	</select>
+</mapper>

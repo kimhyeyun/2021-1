@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost" name="Tomcat v8.5 Server at localhost" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="10">
+    <list key="modules" value0="First::org.eclipse.jst.jee.server:First::jst.web::3.1" value1="WEEK10::org.eclipse.jst.jee.server:WEEK10::jst.web::3.1" value2="WEEK11::org.eclipse.jst.jee.server:WEEK11::jst.web::3.1" value3="WEEK11_LAB::org.eclipse.jst.jee.server:WEEK11_LAB::jst.web::3.1" value4="SimpleJspServletDB::org.eclipse.jst.jee.server:SimpleJspServletDB::jst.web::3.0" value5="WEEK12::org.eclipse.jst.jee.server:WEEK12::jst.web::3.1" value6="FinalProject::org.eclipse.jst.jee.server:FinalProject::jst.web::3.1" value7="WEEK13::org.eclipse.jst.jee.server:WEEK13::jst.web::3.1" value8="gochang::org.eclipse.jst.jee.server:gochang::jst.web::3.1" value9="Final::org.eclipse.jst.jee.server:Final::jst.web::3.1"/>
+  </server>
+</servers>

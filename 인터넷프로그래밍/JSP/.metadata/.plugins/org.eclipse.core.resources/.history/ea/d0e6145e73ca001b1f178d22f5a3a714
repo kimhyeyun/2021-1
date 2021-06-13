@@ -1,0 +1,26 @@
+<%@page import="user.UserDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+	String userid = null;
+	
+	if(request.getAttribute("userid") != null){
+		userid = (String)request.getAttribute("userid");
+	}
+	
+	UserDAO dao = new UserDAO();
+	
+	int succ = dao.UserDelete(userid);
+	
+	if(succ > 0){
+		<li style="margin-bottom: 10px;"><a href="main.jsp">HOME</a></li>
+		<li style="margin-bottom: 10px;"><a href="product.jsp?pcode=1">IPHONE</a></li>
+		<li style="margin-bottom: 10px;"><a href="product.jsp?pcode=2">AIRPODS</a></li>
+		<li style="margin-bottom: 10px;"><a href="product.jsp?pcode=3">SMART
+				TOK</a></li>
+		<li style="margin-bottom: 10px;"><a href="product.jsp?pcode=4">KEYRING</a></li>
+		<li style="margin-bottom: 10px;"><a href="review.jsp">REVIEW</a></li>
+	</ul>
+	}
+%>

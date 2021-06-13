@@ -1,0 +1,13 @@
+package user;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+public class UserDAO {
+	
+	private static SqlSessionFactory sqlMapper;
+	
+	static {
+		String resource = "mybatis/SqlMapConfig.xml"
+	}
+
+}

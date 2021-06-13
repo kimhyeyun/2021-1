@@ -1,0 +1,159 @@
+package goods;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import db.DBSet;
+import goods.Goods;
+
+public class GoodDAO {
+	private Connection conn;
+	private ResultSet rs;
+	private PreparedStatement pstmt;
+	
+	public GoodDAO() {
+		conn = DBSet.getConn();
+	}
+	
+	public int getTotalCnt(int gdCode) {
+		String sql = "SELECT COUNT(*) FROM goods WHERE gdCode = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gdCode);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0; 
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // db오류
+	}
+
+	public ArrayList<Goods> getListPhone(int start, int end){
+		String sql = "SELECT * FROM goods WHERE gdCode = 1 ORDER BY gdID DESC LIMIT " + start + ", "+end;
+		ArrayList<Goods> list = new ArrayList<Goods>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Goods goods = new Goods();
+				goods.setGdID( rs.getInt(1));
+				goods.setGdName(rs.getString(2));
+				goods.setGdContent(rs.getString(3));
+				goods.setGdPrice(rs.getInt(4));
+				goods.setGdImage(rs.getString(5));
+				list.add(goods);
+			}
+			return list;
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ArrayList<Goods> getListAir(int start, int end){
+		String sql = "SELECT * FROM goods WHERE gdCode = 2 ORDER BY gdID DESC LIMIT " + start + ", "+end;
+		ArrayList<Goods> list = new ArrayList<Goods>();
+		
+		try{
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Goods goods = new Goods();
+				goods.setGdID( rs.getInt(1));
+				goods.setGdName(rs.getString(2));
+				goods.setGdContent(rs.getString(3));
+				goods.setGdPrice(rs.getInt(4));
+				goods.setGdImage(rs.getString(5));
+				list.add(goods);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<Goods> getListtok(int start, int end){
+		String sql = "SELECT * FROM goods WHERE gdCode = 3 ORDER BY gdID DESC LIMIT " + start + ", "+end;
+		ArrayList<Goods> list = new ArrayList<Goods>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Goods goods = new Goods();
+				goods.setGdID(rs.getInt(1));
+				goods.setGdName(rs.getString(2));
+				goods.setGdContent(rs.getString(3));
+				goods.setGdPrice(rs.getInt(4));
+				goods.setGdImage(rs.getString(5));
+				list.add(goods);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<Goods> getListkey(int start, int end){
+		String sql = "SELECT * FROM goods WHERE gdCode = 4 ORDER BY gdID DESC LIMIT " + start + ", "+end;
+		ArrayList<Goods> list = new ArrayList<Goods>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Goods goods = new Goods();
+				goods.setGdID( rs.getInt(1));
+				goods.setGdName(rs.getString(2));
+				goods.setGdContent(rs.getString(3));
+				goods.setGdPrice(rs.getInt(4));
+				goods.setGdImage(rs.getString(5));
+				list.add(goods);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+		
+	public Goods getGoods(int gdID) {
+		String sql = "SELECT * FROM goods WHERE gdID = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gdID);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Goods goods = new Goods();
+				goods.setGdID(rs.getInt(1));
+				goods.setGdName(rs.getString(2));
+				goods.setGdContent(rs.getString(3));
+				goods.setGdPrice(rs.getInt(4));
+				goods.setGdImage(rs.getString(5));
+				
+				return goods;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

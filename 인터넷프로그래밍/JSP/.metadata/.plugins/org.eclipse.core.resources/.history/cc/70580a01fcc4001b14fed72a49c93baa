@@ -1,0 +1,63 @@
+package qa;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import db.DBSet;
+
+public class QaDAO {
+	
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	
+	public QaDAO() {
+		conn = DBSet.getConn();
+	}
+	
+	public int Addqa(Qa qa) {
+		String sql = "INSERT INTO QA (qTitle,qContents,qDate,userID) VALUES (?,?,now(),?)";
+	
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, qa.getqTitle());
+			pstmt.setString(2, qa.getqContents());
+			pstmt.setString(3, qa.getUserID());
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			DBSet.close(conn, pstmt);
+		}
+		return -1;
+	}
+
+	
+	public int Rmqa(Qa qa) {
+		String sql = "DELETE FROM QA WHERE qID = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, qa.getqID());
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			DBSet.close(conn, pstmt);
+		}
+		
+		return -1;
+	}
+	
+	public ArrayList<Qa> findqaList(){
+		
+	}
+}

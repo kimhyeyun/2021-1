@@ -1,0 +1,26 @@
+<%@page import="user.UserDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+	String userid = null;
+	
+	if(resopo.getAttribute("userid") != null){
+		userid = (String)request.getAttribute("userid");
+	}
+	
+	UserDAO dao = new UserDAO();
+	
+	int succ = dao.UserDelete(userid);
+	
+	if(succ > 0){
+		out.println("<script>alert('탈퇴가 완료되었습니다.')");
+		out.println("location.href ='main.jsp'");
+		out.println("</script>");
+	}
+	else{
+		out.println("<script>alert('error!')");
+		out.println("history.back()");
+		out.println("</script>");
+	}
+%>

@@ -1,0 +1,14 @@
+package qa;
+
+import java.sql.Timestamp;
+
+public class Review {
+	private int rID;
+	private String rTitle;
+	private String rContents;
+	private Timestamp rDate;
+	private String userID;
+	
+	
+	
+}

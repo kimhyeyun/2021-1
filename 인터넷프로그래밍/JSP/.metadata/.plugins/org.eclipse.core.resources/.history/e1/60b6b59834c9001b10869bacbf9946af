@@ -1,0 +1,148 @@
+<%@page import="user.UserDAO"%>
+<%@page import="goods.GoodDAO"%>
+<%@page import="goods.Goods"%>
+
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>PRODUCT DETAIL</title>
+
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/productDetail.css">
+
+</head>
+<body>
+	<%
+	String userID = null;
+
+	if (session.getAttribute("userID") != null) {
+		userID = (String) session.getAttribute("userID");
+	}
+	
+	UserDAO ud = new UserDAO();
+	boolean ad = false;
+	
+	if(ud.isAdmin(userID)){
+		ad = true;
+	}
+	
+	int gdID = Integer.parseInt(request.getParameter("gdID"));
+		
+	GoodDAO gooddao = new GoodDAO();
+	Goods g = gooddao.getGoods(gdID);
+	%>
+	<div class="wrap">
+		<aside class="left">
+			<h1 id="home">
+				<a href="main.jsp"><img src="static/home.png"></a>
+			</h1>
+			<!-- 카테고리 -->
+			<section id="category">
+				<ul>
+					<li style="margin-bottom: 10px;"><a href="main.jsp">HOME</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=1">IPHONE</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=2">AIRPODS</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=3">SMART
+							TOK</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=4">KEYRING</a></li>
+					<li style="margin-bottom: 10px;"><a href="review.jsp">REVIEW</a></li>
+				</ul>
+			</section>
+		</aside>
+		<aside id="right"></aside>
+
+		<div class="container">
+			<header>
+				<div id="user">
+					<ul>
+						<%
+						if (userID == null) {
+						%>
+						<li><a href="login.jsp">로그인</a></li>
+						<li><a href="joinform.jsp">회원가입</a></li>
+						<%
+						} else {
+						%>
+						<li><a href="logout.jsp">로그아웃</a></li>
+						<li><a href="mypage.jsp">마이페이지</a></li>
+						<%
+						}
+						%>
+						<li><a href="cart.jsp">장바구니</a></li>
+					</ul>
+				</div>
+			</header>
+
+			<div class="contents">
+				<div class="detailArea">
+					<div id="imgArea">
+						<img src=<%=g.getGdImage() %>>
+					</div>
+
+					<div id="infoArea">
+						<table>
+							<tbody>
+								<tr>
+									<td colspan="2">
+										<div class="optTit">
+											<span style="font-size: 20px;color: #555555; font: bold;"><%=g.getGdName() %></span>
+										</div>
+									</td>
+								</tr>
+								<tr >
+									<td colspan="2">
+										<div class="optTit">
+											<span style="font-size: 15px;color: #ff0000;">판매가</span>
+										</div>
+										<div class="optCon">
+											<span style="font-size: 15px;color: #ff0000;"><%=g.getGdPrice() %>원</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div>
+											<span style="font-size: 16px;"><%=g.getGdContent() %></span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<a
+							href="addCart?gdID=<%=g.getGdID()%>&gdName=<%=g.getGdName() %>&gdPrice=<%=g.getGdPrice() %>&gdImage=<%=g.getGdImage() %>"
+							id="cartbtn">BASKET </a>
+						<%
+						if(ad){
+						%>
+						<a href="rmProd?gdID=<%=g.getGdID()%>"></a>
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+
+			<footer>
+				<div id="insta">
+					<div class="titleArea">
+						<h2>INSTAGRAM</h2>
+						<p onclick="window.open('http://www.instagram.com/potato_yunn')">@potato_yun</p>
+					</div>
+				</div>
+				<div id="f_menu" style="font-size: 3px;">
+					<span>ABOUT&nbsp;&nbsp;</span> <span>GUIDE&nbsp;&nbsp;</span> <span>AGREEMENT&nbsp;&nbsp;</span>
+					<span>PRIVACY</span>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

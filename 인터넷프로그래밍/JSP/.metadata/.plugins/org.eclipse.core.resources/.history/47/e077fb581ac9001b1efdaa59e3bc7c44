@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+.titleArea {
+	margin: 20px auto 40px;
+	text-align: left;
+	font-size: 0;
+	line-height: 0;
+	letter-spacing: 0;
+}
+
+.titleArea h2 {
+	margin-right: 4%;
+	padding-left: 40px;
+	position: relative;
+	box-sizing: border-box;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 26px;
+	letter-spacing: 0px;
+	font-family: 'Rufina', 'Jeju Myeonjo', serif;
+	vertical-align: middle;
+}
+
+.titleArea h2:before {
+	content: "";
+	position: absolute;
+	background-color: #898989;
+	width: 20px;
+	height: 1px;
+	left: 0px;
+	top: 13px;
+}
+
+.prdList {
+	display: block;
+	width: 100%;
+	font-size: 0;
+	line-height: 0;
+	letter-spacing: 0;
+	margin: 0;
+}
+
+.thumnail {
+	margin: 0 auto 20px;
+	text-align: center;
+}
+
+.prdList>li {
+	display: block;
+}
+
+img {
+	border: none;
+	vertical-align: top;
+}
+
+.description {
+	margin: 15px auto;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: left;
+	padding: 0 2px;
+	letter-spacing: 0.4px;
+	position: relative;
+}
+
+.description>ul {
+	margin: 0;
+	padding: 0;
+}
+
+.name {
+	display: block;
+	border-bottom: 1px solid #f1f1f1;
+	padding-bottom: 6px;
+	margin-bottom: 10px;
+}
+
+.name>a {
+	display: inline-block;
+	font-weight: 300;
+	letter-spacing: 0.4px;
+}
+
+.spec>li {
+	width: 100%;
+	display: block !important;
+	margin-top: 3px;
+	font-weight: 400;
+}
+
+.pdiv {
+	text-align: center;
+}
+
+.pdiv ul {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.pdiv ul li {
+	float: left;
+	margin-left: -1px;
+	z-index: 1;
+}

@@ -1,0 +1,39 @@
+1622531838409	Move 'main.jsp' to 'WebContent'
+1622622283831	Move 2 resources to '액세사리'
+1622622293998	Delete element
+1622623426573	Delete element
+1622623477566	Delete element
+1622626065778	Rename resource '배너'
+1622626107628	Delete elements
+1622644081266	Delete element
+1622647380492	Move 'logout.jsp' to 'WebContent'
+1622647393958	Delete element
+1622698316766	Delete elements
+1622698325505	Rename package 'my.db'
+1622698571803	Delete element
+1622700366210	Rename package 'Goods'
+1622700904608	Delete elements
+1622715252961	Rename resource 'iphone.css'
+1622781937363	Move file
+1622782915742	Move file
+1622784589984	Rename package 'QA'
+1622785013515	Delete element
+1622800346714	Rename type 'updateQNA'
+1622875434608	Delete element
+1622877258799	Delete element
+1622879014858	Rename package 'qa'
+1622879276127	Delete element
+1622879301940	Rename type 'updateQNAServlet'
+1622879324055	Rename resource 'writeQNA.jsp'
+1622879425699	Rename resource 'qna.jsp'
+1622879440782	Rename resource 'qa.css'
+1622879640591	Rename resource 'detailqna.jsp'
+1622879668535	Rename resource 'qadetail.css'
+1622879807919	Rename resource 'writeqa.css'
+1622880562961	Delete elements
+1622883405718	Rename type 'MyinfoUpdate'
+1622886482377	Delete element
+1622886839202	Delete element
+1622887051075	Delete element
+1622887535928	Rename resource 'adminAddProduct.jsp'
+1622887584698	Delete elements

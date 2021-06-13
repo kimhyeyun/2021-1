@@ -1,0 +1,44 @@
+package review;
+
+import java.sql.Timestamp;
+
+public class Review {
+	private int rID;
+	private String rTitle;
+	private String rContents;
+	private Timestamp rDate;
+	private String userID;
+	public int getrID() {
+		return rID;
+	}
+	public void setrID(int rID) {
+		this.rID = rID;
+	}
+	public String getrTitle() {
+		return rTitle;
+	}
+	public void setrTitle(String rTitle) {
+		this.rTitle = rTitle;
+	}
+	public String getrContents() {
+		return rContents;
+	}
+	public void setrContents(String rContents) {
+		this.rContents = rContents;
+	}
+	public Timestamp getrDate() {
+		return rDate;
+	}
+	public void setrDate(Timestamp rDate) {
+		this.rDate = rDate;
+	}
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	
+	
+	
+}

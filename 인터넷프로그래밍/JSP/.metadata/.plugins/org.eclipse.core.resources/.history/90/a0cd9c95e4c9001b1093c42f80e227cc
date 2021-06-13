@@ -1,0 +1,24 @@
+package user;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import db.DBSet;
+
+public interface UserDAO {
+	
+	public int login(String userID, String userPW);
+	public int adlogin(String userID, String userPW);
+	public int join(User user);
+	public int update(String userID, String userPW, String userName, String userPhone);
+	public int delete(String userID) ;
+	public boolean isAdmin(String userID);
+	
+}

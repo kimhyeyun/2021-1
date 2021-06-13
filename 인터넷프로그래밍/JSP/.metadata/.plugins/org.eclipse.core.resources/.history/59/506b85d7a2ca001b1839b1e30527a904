@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.QaMapper">
+	<insert id="qaInsertuser" parameterType="QADTO">
+		INSERT INTO qa (qtitle, qcontent, qdate, userid, admin) VALUES(#{qtitle}, #{qcontent}, now(), #{userid}, 0)
+	</insert>
+	
+	<delete id="qaDelete" parameterType="int">
+		DELETE FROM qa WHERE qid = #{qid}
+	</delete>
+	
+	<select id="qaSearchAll" parameterType="QaPage" resultType="QaDTO">
+		SELECT * FROM qa LIMIT #{start}, #{end}
+	</select>
+	
+	<select id="qaSearchadmin" parameterType=""></select>
+	
+	<select id="qagetTotalCnt" resultType="int">
+		SELECT COUNT(*) FROM qa
+	</select>
+	
+	<select id="qaSearchOne" parameterType="int" resultType="QaDTO">
+		SELECT * FROM qa WHERE qid = #{qid}
+	</select>
+</mapper>

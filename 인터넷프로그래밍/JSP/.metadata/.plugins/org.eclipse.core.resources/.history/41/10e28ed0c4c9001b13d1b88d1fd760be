@@ -1,0 +1,75 @@
+package servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import review.Review;
+import review.ReviewDAO;
+
+/**
+ * Servlet implementation class removeReviewServlet
+ */
+@WebServlet("/rmReview")
+public class removeReviewServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public removeReviewServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		HttpSession session = request.getSession();
+		PrintWriter script = response.getWriter();
+		
+		int rID = -1;
+		if(request.getParameter("rID")  != null) {
+			rID = Integer.parseInt(request.getParameter("rID"));
+		}
+		
+		ReviewDAO rdao = new ReviewDAO();
+		Review r = rdao.findreivew(rID);
+		
+		int result = rdao.RemoveReview(r);
+		
+		if(result == -1) {
+			script.println("<script>");
+			script.println("alert('에러발생')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		else {
+			script.println("<script>");
+			script.println("alert('상품 삭제가 완료되었습니다.')");
+			script.println("location.href = 'product.jsp?gdCode="+gdCode+"'");
+			script.println("</script>");
+			
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

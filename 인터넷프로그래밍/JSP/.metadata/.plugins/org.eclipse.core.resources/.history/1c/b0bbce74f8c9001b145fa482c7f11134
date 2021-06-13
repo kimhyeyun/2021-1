@@ -1,0 +1,20 @@
+<%@page import="user.UserDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+request.setCharacterEncoding("utf-8");
+%>
+
+<jsp:useBean id="dto" class="user.UserDTO"/>
+<jsp:setProperty property="*" name="dto"/>
+
+<%
+	UserDAO dao = new UserDAO();
+	int succ = dao.UserLogin(dto.getUserid(),dto.getUserpw());
+	
+	if(succ == -1){
+		out.prinln("<script>alert('존재하지 않는 아이디입니다.')");
+		out.println("history.back()");
+		out.println("</script>")
+	}
+%>

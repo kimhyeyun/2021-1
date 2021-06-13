@@ -1,0 +1,91 @@
+package servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import review.Qa;
+import review.QaDAO;
+import review.Review;
+import review.ReviewDAO;
+
+/**
+ * Servlet implementation class updateQNA
+ */
+@WebServlet("/write")
+public class writereviewServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public writereviewServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		ServletContext context = getServletContext();
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/writeReview.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		
+		HttpSession session = request.getSession();
+		
+		Review r;
+		r.setrTitle(request.getParameter("rTitle"));
+		r.setUserID(request.getParameter("userID"));
+		r.setrContents(request.getParameter("rContents"));
+		
+		if(r.getrContents() == null || r.getUserID() == null || r.getrTitle() == null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('모든 정보를 입력하세요')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		
+		else {
+			ReviewDAO reviewdao = new ReviewDAO();
+			int result = reviewdao.AddReview(r);
+			
+			if(result == -1) {
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('에러발생')");
+				script.println("history.back()");
+				script.println("</script>");
+			}
+			else {
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('질문을 등록완료했습니다.')");
+				script.println("location.href = 'qna.jsp'");
+				script.println("</script>");
+			}
+		}
+		
+	}
+
+}

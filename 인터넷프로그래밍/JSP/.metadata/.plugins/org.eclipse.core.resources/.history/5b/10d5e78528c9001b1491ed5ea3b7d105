@@ -1,0 +1,183 @@
+<%@page import="user.UserDAO"%>
+<%@page import="page.Page"%>
+<%@page import="goods.Goods"%>
+<%@page import="goods.GoodDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<%
+	int gdCode = -1;
+	if(request.getParameter("gdCode")!=null){
+		gdCode = Integer.parseInt(request.getParameter("gdCode"));	
+	}
+	if(gdCode == 1){
+%>
+	<title>IPHONE</title>
+	<%}else if(gdCode == 2){ %>
+	<title>AIRPODS</title>
+	<%}else if(gdCode == 3){ %>
+	<title>SMART TOK</title>
+	<%} else {%>
+	<title>KEERYING</title>
+	<%} %>
+
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/normalpackage.css">
+
+</head>
+<body>
+	<%
+	GoodDAO goodDAO = new GoodDAO();
+	Page p = new Page();
+
+	int totalcnt = goodDAO.getTotalCnt(1);
+
+	String userID = null;
+
+	if (session.getAttribute("userID") != null) {
+		userID = (String) session.getAttribute("userID");
+	}
+	int pageNumber = 1;
+	if (request.getParameter("pageNumber") != null) {
+		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+	}
+
+	p.setPageNo(pageNumber);
+	p.setPageSize(5);
+	p.setTotalCount(totalcnt);
+
+	pageNumber = (pageNumber - 1) * 5;
+	
+	UserDAO userDAO = new UserDAO();
+	boolean ad = false;
+	if(userDAO.isAdmin(userID))
+		ad = true;
+	%>
+	<div class="wrap">
+		<aside class="left">
+			<h1 id="home">
+				<a href="main.jsp"><img src="static/home.png"></a>
+			</h1>
+			<!-- 카테고리 -->
+			<section id="category">
+				<ul>
+					<li style="margin-bottom: 10px;"><a href="main.jsp">HOME</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=1">IPHONE</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=2">AIRPODS</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=3">SMART
+							TOK</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=4">KEYRING</a></li>
+					<li style="margin-bottom: 10px;"><a href="review.jsp">REVIEW</a></li>
+				</ul>
+			</section>
+		</aside>
+		<aside id="right"></aside>
+
+		<div class="container">
+			<header>
+				<div id="user">
+					<ul>
+						<%
+						if (userID == null) {
+						%>
+						<li><a href="login.jsp">로그인</a></li>
+						<li><a href="joinform.jsp">회원가입</a></li>
+						<%
+						} else {
+						%>
+						<li><a href="logout.jsp">로그아웃</a></li>
+						<li><a href="mypage.jsp">마이페이지</a></li>
+						<%
+						}
+						%>
+						<li><a href="cart.jsp">장바구니</a></li>
+					</ul>
+				</div>
+			</header>
+
+			<div class="contents">
+				<div class="titleArea">
+					<h2>IPHONE</h2>
+				</div>
+
+				<div class="xans-element- xans-product xans-product-normalpackage ">
+					<div
+						class="xans-element- xans-product xans-product-listnormal ec-base-product">
+						<ul class="prdList">
+							<%
+							ArrayList<Goods> list = goodDAO.getListPhone(pageNumber, p.getPageSize());
+
+							for (int i = 0; i < list.size(); i++) {
+							%>
+
+							<li class="xans-record-">
+								<div class="thumbnail">
+									<div class="prdImg">
+										<a href="productDetail.jsp?gdID=<%=list.get(i).getGdID()%>">
+											<img src=<%=list.get(i).getGdImage()%> style="width: 300px;">
+										</a>
+									</div>
+								</div>
+
+								<div class="description">
+									<strong class="name"> <a> <span
+											style="font-size: 14px; color: #555555; font-weight: bold;">
+												<%=list.get(i).getGdName()%>
+										</span>
+									</a>
+									</strong>
+									<ul class="spec">
+										<li><span
+											style="font-size: 14px; color: #ff0000; font-weight: bold">
+												<%=list.get(i).getGdPrice()%>원
+										</span></li>
+									</ul>
+
+								</div>
+							</li>
+							<%
+							}
+							%>
+						</ul>
+
+					</div>
+				</div>
+				<div class="pdiv">
+					<%
+					for (int i = p.getStartPageNo(); i <= p.getEndPageNo(); i++) {
+					%>
+					<ul class="pul">
+						<li><a href="iphone.jsp?pageNumber=<%=i%>"><%=i%></a></li>
+					</ul>
+					<%
+					}
+					%>
+				</div>
+				<% if(ad) {%>
+					<a href="addProduct.jsp" class="addprod">ADD PRODUCT</a>
+				<%} %>
+			</div>
+
+			<footer>
+				<div id="insta">
+					<div class="titleArea">
+						<h2>INSTAGRAM</h2>
+						<p onclick="window.open('http://www.instagram.com/potato_yunn')">@potato_yun</p>
+					</div>
+				</div>
+				<div id="f_menu">
+					<span>ABOUT&nbsp;&nbsp;</span> <span>GUIDE&nbsp;&nbsp;</span> <span>AGREEMENT&nbsp;&nbsp;</span>
+					<span>PRIVACY</span>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

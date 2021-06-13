@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<title>YUN CASE</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/flickity.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/swiper.css">
+
+<script src="js/flickity.pkgd.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/swiper.js"></script>
+</head>
+<body>
+<div id="wrap">
+        <aside id="left">
+            <h1 id="home"><a href="home.jsp"><img src="static/home.png"></a></h1>
+            <!-- 카테고리 -->
+            <section id="category">
+                <ul>
+                    <li><a href="main.jsp">HOME</a></li>
+                    <li><a href="">IPHONE</a></li>
+                    <li><a href="">GALAXY</a></li>
+                    <li><a href="">ACC</a></li>
+                    <li><a href="">Q&A</a></li>
+                    <li><a href="">NOTICE</a></li>
+                </ul>
+            </section>
+        </aside>
+        <aside id="right">
+            
+        </aside>
+        
+        <div id="container">
+            <header>
+                <div id="user">
+                    <ul>
+                        <li><a href="">로그인</a></li>
+                        <li><a href="joinform.jsp">회원가입</a></li>
+                        <li><a href="">장바구니</a></li>
+                    </ul>
+                </div>
+            </header>
+            
+            <div id="contents">
+            	<section id="main">
+            		<!-- slide -->
+            		<div id="visual">
+            			<ul class="carousel-visual flickity-enabled is-draggable" tabindex="0">
+            				<li class="visual-cell">
+            					<img alt="" src="static/배너/대배너1.jpg">
+            				</li>
+            				<li class="visual-cell">
+            					<img alt="" src="static/배너/대배너2.jpg">
+            				</li>
+            				<li class="visual-cell">
+            					<img alt="" src="static/배너/대배너3.jpg">
+            				</li>
+            				<li class="visual-cell">
+            					<img alt="" src="static/배너/대배너4.jpg">
+            				</li>
+            			</ul>
+            			
+            		</div>
+            	</section>
+            </div>
+            
+            <footer>
+				<div id="insta">
+					<div class="titleArea">
+					<h2>INSTAGRAM</h2>
+					<p onclick="window.open('http://www.instagram.com/potato_yunn')">@potato_yun</p>
+					</div>
+				</div>
+				<div id="f_menu">
+					<span>ABOUT&nbsp;&nbsp;</span>
+					<span>GUIDE&nbsp;&nbsp;</span>
+					<span>AGREEMENT&nbsp;&nbsp;</span>
+					<span>PRIVACY</span>
+				</div>
+			</footer>
+			
+		</div>
+	</div>
+</body>
+</html>

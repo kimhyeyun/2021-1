@@ -1,0 +1,27 @@
+<%@page import="product.ProductDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+request.setCharacterEncoding("utf-8");
+%>
+
+<jsp:useBean id="dto" class="product.ProductDTO">
+<jsp:setProperty property="*" name="dto"/>
+</jsp:useBean>
+
+<%
+	ProductDAO dao = new ProductDAO();
+	int succ = dao.AddProduct(dto);
+	if(succ > 0){
+		out.println("<script>alert('상품 추가가 완료되었습니다.')");
+		out.println("location.href = 'product.jsp?pcode="+dto.getPcode()+"'");
+		out.println("</script>");
+	}
+	else{
+		out.println("<script>alert('에러발생!')");
+		out.println("history.back()");
+		out.println("</script>");
+	}
+
+%>

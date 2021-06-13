@@ -1,0 +1,161 @@
+<%@page import="page.Page"%>
+<%@page import="review.Review"%>
+<%@page import="review.ReviewDAO"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Q&A</title>
+
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/review.css">
+
+</head>
+<body>
+	<%
+	ReviewDAO rdao = new ReviewDAO();
+	Page p = new Page();
+
+	int totalcnt = rdao.getTotalCnt(2);
+
+	String userID = null;
+
+	if (session.getAttribute("userID") != null) {
+		userID = (String) session.getAttribute("userID");
+	}
+	int pageNumber = 1;
+	if (request.getParameter("pageNumber") != null) {
+		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+	}
+
+	p.setPageNo(pageNumber);
+	p.setPageSize(10);
+	p.setTotalCount(totalcnt);
+
+	pageNumber = (pageNumber - 1) * 5;
+	%>
+	<div class="wrap">
+		<aside class="left">
+			<h1 id="home">
+				<a href="main.jsp"><img src="static/home.png"></a>
+			</h1>
+			<!-- 카테고리 -->
+			<section id="category">
+				<ul>
+					<li style="margin-bottom: 10px;"><a href="main.jsp">HOME</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=1">IPHONE</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=2">AIRPODS</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=3">SMART
+							TOK</a></li>
+					<li style="margin-bottom: 10px;"><a href="product.jsp?gdCode=4">KEYRING</a></li>
+					<li style="margin-bottom: 10px;"><a href="review.jsp">REVIEW</a></li>
+				</ul>
+			</section>
+		</aside>
+		<aside id="right"></aside>
+
+		<div class="container">
+			<header>
+				<div id="user">
+					<ul>
+						<%
+						if (userID == null) {
+						%>
+						<li><a href="login.jsp">로그인</a></li>
+						<li><a href="joinform.jsp">회원가입</a></li>
+						<%
+						} else {
+						%>
+						<li><a href="logout.jsp">로그아웃</a></li>
+						<li><a href="mypage.jsp">마이페이지</a></li>
+						<%
+						}
+						%>
+						<li><a href="cart.jsp">장바구니</a></li>
+					</ul>
+				</div>
+			</header>
+
+			<div class="contents">
+				<div class="titleArea">
+					<h2>REVIEW</h2>
+				</div>
+
+				<div id="reviewbox">
+					<%
+					if(rdao.isEmpty()){
+					%>
+					<p>빈 게시판입니다.</p>
+					<a href="writeReview.jsp?radmin=<%=0 %>"" id="writebtn">WRITE </a>
+					<a href="writeReview.jsp?radmin=<%=1 %>"" id="writeadbtn">WRITE ADMIN</a>
+					<%}else{ %>
+					<table border="1">
+						<thead>
+							<tr>
+								<th scope="col">번호</th>
+								<th scope="col">제목</th>
+								<th scope="col">작성자</th>
+								<th scope="col">작성일</th>
+						</thead>
+						<tbody>
+							<% 
+								ArrayList<Review> list = rdao.findreviewList();
+								for(int i=0;i<list.size();i++){
+							%>
+							<tr style="background-color: #ffffff; color: #777777;">
+						
+								<td style="width: 70px;"><%=i+1%></td>
+								<td style="text-align: left; padding-left: 10px;'"><a href="detailreview.jsp?rID=<%=list.get(i).getrID()%>"><%=list.get(i).getrTitle() %></td>
+								<td style="width:80px;"><%=list.get(i).getUserID() %></td>
+								<%
+									Timestamp ts = list.get(i).getrDate();
+									SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd");
+								%>
+								<td style="width:100px;"><%=time.format(ts) %></td>
+							</tr>
+							<%} %>
+						</tbody>
+					</table>
+					<a href="writeReview.jsp?radmin=<%=0 %>"" id="writebtn">WRITE </a>
+					<a href="writeReview.jsp?radmin=<%=1 %>" id="writeadbtn">WRITE ADMIN</a>
+				</div>
+				<div class="pdiv">
+					<%
+					for (int i = p.getStartPageNo(); i <= p.getEndPageNo(); i++) {
+					%>
+					<ul class="pul">
+						<li><a href="airpod.jsp?pageNumber=<%=i%>"><%=i%></a></li>
+					</ul>
+					<%
+					}
+					}	
+					%>
+
+				</div>
+
+			</div>
+
+			<footer>
+				<div id="insta">
+					<div class="titleArea">
+						<h2>INSTAGRAM</h2>
+						<p onclick="window.open('http://www.instagram.com/potato_yunn')">@potato_yun</p>
+					</div>
+				</div>
+				<div id="f_menu" style="font-size: 3px;">
+					<span>ABOUT&nbsp;&nbsp;</span> <span>GUIDE&nbsp;&nbsp;</span> <span>AGREEMENT&nbsp;&nbsp;</span>
+					<span>PRIVACY</span>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
