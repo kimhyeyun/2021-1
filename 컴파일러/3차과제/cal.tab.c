@@ -94,28 +94,26 @@
 
 void yyerror();
 int yylex(void);
+int lookup(const char*);			/* 선언된 id가 symbol_table에 저장되어있는지 찾는 함수 */
+void insert(const char*, char type);	/* symbol_table에 선언한 변수 넣는 함수 */
 
 FILE *fp, *yyin;
 
-char tmp_var[5];
-int tmp_idx = 0;
 
-struct str{
-	char name[256];
-	int type;
+struct str{				/* 변수의 type과 변수명을 저장 할 구조체 */
+	char name[512];
+	char type;
 };
 
-struct str symbol_table[512];
-int table_idx = 0;
-int lookup(const char *);
 
-enum{
-	INT_TYPE = 1,
-	FLOAT_TYPE
-};
-
-int flag = 0;
-int idx;
+char tmp_var[10];		/* 임시변수 이름*/
+int tmp_idx = 0;			/* 임시변수의 번호 (ex. t1, t2...) */
+struct str symbol_table[512];	/* 변수의 이름과 type을 저장할 struct */
+int table_idx = 0;		/* symbol_table의 index */	
+char flag = 'i';			/* type check를 위한 변수 */
+int ok;				/* id가 symbol_table에 저장된 index를 저장할 변수 */
+char INT_TYPE = 'i';		/* type check를 위한 변수들 */
+char FLOAT_TYPE = 'f';
 
 
 
@@ -139,14 +137,13 @@ int idx;
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 39 "cal.y"
+#line 37 "cal.y"
 {
-	float fval;
-	int ival;
-	char sval[256];
+	char str[512]; /* 식 등*/
+	char type;	/* type */
 }
 /* Line 193 of yacc.c.  */
-#line 150 "cal.tab.c"
+#line 147 "cal.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -159,7 +156,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 163 "cal.tab.c"
+#line 160 "cal.tab.c"
 
 #ifdef short
 # undef short
@@ -429,7 +426,7 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     6,     9,    10,    13,    15,    17,    21,
+       0,     0,     3,     6,     9,    10,    13,    15,    17,    20,
       24,    26,    28,    30,    34,    38,    42,    46,    50
 };
 
@@ -437,8 +434,8 @@ static const yytype_uint8 yyprhs[] =
 static const yytype_int8 yyrhs[] =
 {
       18,     0,    -1,    18,    19,    -1,    18,    13,    -1,    -1,
-      20,    14,    -1,    21,    -1,    22,    -1,     6,     7,    23,
-      -1,     5,     6,    -1,     4,    -1,     3,    -1,     6,    -1,
+      20,    14,    -1,    21,    -1,    22,    -1,     5,     6,    -1,
+       6,     7,    23,    -1,     4,    -1,     3,    -1,     6,    -1,
       23,     8,    23,    -1,    23,     9,    23,    -1,    23,    10,
       23,    -1,    23,    11,    23,    -1,    15,    23,    16,    -1,
        9,    23,    -1
@@ -447,8 +444,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    60,    60,    61,    62,    65,    68,    69,    72,    89,
-     101,   105,   113,   127,   132,   138,   143,   148,   151
+       0,    57,    57,    58,    59,    62,    65,    66,    69,    81,
+      98,   103,   112,   130,   135,   141,   146,   151,   154
 };
 #endif
 
@@ -459,7 +456,7 @@ static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "INT", "FLOAT", "TYPE", "ID", "ASSIGN",
   "'+'", "'-'", "'*'", "'/'", "UMINUS", "'\\n'", "';'", "'('", "')'",
-  "$accept", "lines", "stmts", "stmt", "asign", "def", "expr", 0
+  "$accept", "lines", "stmts", "stmt", "def", "asign", "expr", 0
 };
 #endif
 
@@ -483,7 +480,7 @@ static const yytype_uint8 yyr1[] =
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     2,     2,     0,     2,     1,     1,     3,     2,
+       0,     2,     2,     2,     0,     2,     1,     1,     2,     3,
        1,     1,     1,     3,     3,     3,     3,     3,     2
 };
 
@@ -493,7 +490,7 @@ static const yytype_uint8 yyr2[] =
 static const yytype_uint8 yydefact[] =
 {
        4,     0,     1,     0,     0,     3,     2,     0,     6,     7,
-       9,     0,     5,    11,    10,    12,     0,     0,     8,    18,
+       8,     0,     5,    11,    10,    12,     0,     0,     9,    18,
        0,     0,     0,     0,     0,    17,    13,    14,    15,    16
 };
 
@@ -1361,132 +1358,137 @@ yyreduce:
   switch (yyn)
     {
         case 8:
-#line 72 "cal.y"
-    {	/* ID가 symbol table에 있는지 확인 */
-				idx = lookup((yyvsp[(1) - (3)].sval));
-				/* 없다면 */
-				if(idx == -1){
-					fprintf(fp, "ERROR!\n(%s is unknown id)\n", (yyvsp[(1) - (3)].sval));
-					exit(0);
-				}
-				/* three-address code 출력 */
-				fprintf(fp, "%s = %s\n", (yyvsp[(1) - (3)].sval), (yyvsp[(3) - (3)].sval));
-
-				/* type mismatch check */
-				if(flag != symbol_table[idx].type)
-					fprintf(fp, "//warning: type mismatch\n");
-				flag = 0;
-			;}
-    break;
-
-  case 9:
-#line 89 "cal.y"
+#line 69 "cal.y"
     {	/* 이미 symbol table에 있는지 확인 */
-			if(lookup((yyvsp[(2) - (2)].sval)) != -1){
-			/* 있다면 */
-				fprintf(fp, "ERROR!\n(%s is already declared)\n", (yyvsp[(2) - (2)].sval));
+			if(lookup((yyvsp[(2) - (2)].str)) != -1){
+			/* 있다면, 이미 선언되었다고 에러 출력 */
+				fprintf(fp, "ERROR!\n(%s is already declared)\n", (yyvsp[(2) - (2)].str));
 				exit(0);
 			}
 			/* 없으면 추가 */
-			strcpy(symbol_table[table_idx].name, (yyvsp[(2) - (2)].sval));
-			symbol_table[table_idx++].type = (yyvsp[(1) - (2)].ival);
+			insert((yyvsp[(2) - (2)].str), (yyvsp[(1) - (2)].type));
+		;}
+    break;
+
+  case 9:
+#line 81 "cal.y"
+    {	/* ID가 symbol table에 있는지 확인 */
+				ok = lookup((yyvsp[(1) - (3)].str));
+				/* 없다면 */
+				if(ok == -1){
+					fprintf(fp, "ERROR!\n(%s is unknown id)\n", (yyvsp[(1) - (3)].str));
+					exit(0);
+				}
+				/* three-address code 출력 */
+				fprintf(fp, "%s = %s\n", (yyvsp[(1) - (3)].str), (yyvsp[(3) - (3)].str));
+
+				/* type mismatch check => expr의 type과 id의 type이 같은지*/
+				if(flag != symbol_table[ok].type)
+					fprintf(fp, "//warning: type mismatch\n");
+				flag = 'i';
 			;}
     break;
 
   case 10:
-#line 101 "cal.y"
+#line 98 "cal.y"
     {
+			/* flag를 float type으로 */
 			flag = FLOAT_TYPE;
-			strcpy((yyval.sval), (yyvsp[(1) - (1)].sval));
+			strcpy((yyval.str), (yyvsp[(1) - (1)].str));
 		;}
     break;
 
   case 11:
-#line 105 "cal.y"
+#line 103 "cal.y"
     {	
+			/* 이전에 float type 이었다면 그대로 */
 			if(flag == FLOAT_TYPE)
 				flag = FLOAT_TYPE;
 			else
 				flag = INT_TYPE;
 
-			strcpy((yyval.sval), (yyvsp[(1) - (1)].sval));
+			strcpy((yyval.str), (yyvsp[(1) - (1)].str));
 		;}
     break;
 
   case 12:
-#line 113 "cal.y"
+#line 112 "cal.y"
     {	
 			/* symbol table 확인 */
-			idx = lookup((yyvsp[(1) - (1)].sval));
-			if(idx == -1){
-				fprintf(fp, "ERROR!\n(%s is unknown id)\n", (yyvsp[(1) - (1)].sval));
+			ok = lookup((yyvsp[(1) - (1)].str));
+			/* 존재하지않음 */
+			if(ok == -1){
+				fprintf(fp, "ERROR!\n(%s is unknown id)\n", (yyvsp[(1) - (1)].str));
 				exit(0);
 			}
+			/* 존재함 */
+			/* 1. 이전에 float type이 나왔으면 */
 			if(flag == FLOAT_TYPE)
 				flag = FLOAT_TYPE;
+			/* 2. 이전에 int type 이었다면 id(변수)의 type으로 변경 */
 			else
-				flag = symbol_table[idx].type;
+				flag = symbol_table[ok].type;
 		
-			strcpy((yyval.sval), (yyvsp[(1) - (1)].sval));
+			strcpy((yyval.str), (yyvsp[(1) - (1)].str));
 		;}
     break;
 
   case 13:
-#line 127 "cal.y"
+#line 130 "cal.y"
     {
 				sprintf(tmp_var, "t%d", tmp_idx++);
-				strcpy((yyval.sval), tmp_var);
-				fprintf(fp, "%s = %s + %s\n", tmp_var, (yyvsp[(1) - (3)].sval), (yyvsp[(3) - (3)].sval));
+				strcpy((yyval.str), tmp_var);
+				fprintf(fp, "%s = %s + %s\n", tmp_var, (yyvsp[(1) - (3)].str), (yyvsp[(3) - (3)].str));
 			;}
     break;
 
   case 14:
-#line 132 "cal.y"
+#line 135 "cal.y"
     {
 			
 				sprintf(tmp_var, "t%d", tmp_idx++);
-				strcpy((yyval.sval), tmp_var);
-				fprintf(fp, "%s = %s - %s\n", tmp_var, (yyvsp[(1) - (3)].sval), (yyvsp[(3) - (3)].sval));
+				strcpy((yyval.str), tmp_var);
+				fprintf(fp, "%s = %s - %s\n", tmp_var, (yyvsp[(1) - (3)].str), (yyvsp[(3) - (3)].str));
 			;}
     break;
 
   case 15:
-#line 138 "cal.y"
+#line 141 "cal.y"
     {
 				sprintf(tmp_var, "t%d", tmp_idx++);
-				strcpy((yyval.sval), tmp_var);
-				fprintf(fp, "%s = %s * %s\n", tmp_var, (yyvsp[(1) - (3)].sval), (yyvsp[(3) - (3)].sval));
+				strcpy((yyval.str), tmp_var);
+				fprintf(fp, "%s = %s * %s\n", tmp_var, (yyvsp[(1) - (3)].str), (yyvsp[(3) - (3)].str));
 			;}
     break;
 
   case 16:
-#line 143 "cal.y"
+#line 146 "cal.y"
     {
 				sprintf(tmp_var, "t%d", tmp_idx++);
-				strcpy((yyval.sval), tmp_var);
-				fprintf(fp, "%s = %s / %s\n", tmp_var, (yyvsp[(1) - (3)].sval), (yyvsp[(3) - (3)].sval));
+				strcpy((yyval.str), tmp_var);
+				fprintf(fp, "%s = %s / %s\n", tmp_var, (yyvsp[(1) - (3)].str), (yyvsp[(3) - (3)].str));
 			;}
     break;
 
   case 17:
-#line 148 "cal.y"
+#line 151 "cal.y"
     {
-				strcpy((yyval.sval), (yyvsp[(2) - (3)].sval));
+				strcpy((yyval.str), (yyvsp[(2) - (3)].str));
 			;}
     break;
 
   case 18:
-#line 151 "cal.y"
+#line 154 "cal.y"
     {
 					sprintf(tmp_var, "t%d", tmp_idx++);
-					strcpy((yyval.sval), tmp_var);
-					fprintf(fp, "%s = -%s\n", (yyval.sval), (yyvsp[(2) - (2)].sval));
+					strcpy((yyval.str), tmp_var);
+					fprintf(fp, "%s = -%s;\n", (yyval.str), (yyvsp[(2) - (2)].str));
 				;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1490 "cal.tab.c"
+#line 1492 "cal.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1700,7 +1702,7 @@ yyreturn:
 }
 
 
-#line 158 "cal.y"
+#line 161 "cal.y"
 
 
 /* error 처리 함수 */
@@ -1709,10 +1711,17 @@ void yyerror()
 	fprintf(fp,"error!\n");
 }
 
-int lookup(const char * id){
+void insert(const char *id, char type){
+	strcpy(symbol_table[table_idx].name, id);
+	symbol_table[table_idx].type = type;
+	table_idx++;
+}
+
+/* symbol_table에서 찾는 함수 */
+int lookup(const char* id){
 	int ans = -1;
-	for(int i=0;i<table_idx;++i){
-		if(!strcmp(symbol_table[i].name, id)){
+	for(int i=0;i<table_idx;i++){
+		if(!strcmp(symbol_table[i].name,id)){
 			ans = i;
 			break;
 		}
@@ -1728,7 +1737,10 @@ int main()
 
 	yyin = input;
 	
-	yyparse();
+	do{
+		yyparse();
+
+	}while(!feof(yyin));
 
 	return 0;
 }

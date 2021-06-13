@@ -477,12 +477,9 @@ char *yytext;
 
 void yyerror();
 
-enum{
-	INT_TYPE = 1,
-	FLOAT_TYPE
-};
 
-#line 486 "lex.yy.c"
+
+#line 483 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -664,10 +661,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 33 "cal.l"
+#line 30 "cal.l"
 
 
-#line 671 "lex.yy.c"
+#line 668 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -752,67 +749,67 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 35 "cal.l"
-{strcpy(yylval.sval, yytext);
+#line 32 "cal.l"
+{strcpy(yylval.str, yytext);
 	return FLOAT;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 37 "cal.l"
-{strcpy(yylval.sval, yytext);
+#line 34 "cal.l"
+{strcpy(yylval.str, yytext);
 	return INT;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 39 "cal.l"
-{yylval.ival = INT_TYPE;
+#line 36 "cal.l"
+{yylval.type = 'i';
 	return TYPE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 41 "cal.l"
-{yylval.ival = FLOAT_TYPE;
+#line 38 "cal.l"
+{yylval.type = 'f';
 	return TYPE;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 43 "cal.l"
-{strcpy(yylval.sval, yytext);
+#line 40 "cal.l"
+{strcpy(yylval.str, yytext);
 	return ID;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 45 "cal.l"
+#line 42 "cal.l"
 {return *yytext; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 46 "cal.l"
-{strcpy(yylval.sval, yytext);
+#line 43 "cal.l"
+{strcpy(yylval.str, yytext);
 	return ASSIGN;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 48 "cal.l"
+#line 45 "cal.l"
 ;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 49 "cal.l"
+#line 46 "cal.l"
 {return *yytext;}
 	YY_BREAK
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 50 "cal.l"
+#line 47 "cal.l"
 {return *yytext;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 53 "cal.l"
+#line 50 "cal.l"
 ECHO;
 	YY_BREAK
-#line 816 "lex.yy.c"
+#line 813 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1809,7 +1806,8 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 53 "cal.l"
+#line 50 "cal.l"
+
 
 
 /* 파일(입력)의 끝에 호출됨. 1을 반환하면 파싱 종료 */

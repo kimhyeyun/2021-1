@@ -60,14 +60,13 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 39 "cal.y"
+#line 37 "cal.y"
 {
-	float fval;
-	int ival;
-	char sval[256];
+	char str[512]; /* 식 등*/
+	char type;	/* type */
 }
 /* Line 1529 of yacc.c.  */
-#line 71 "cal.tab.h"
+#line 70 "cal.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

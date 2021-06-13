@@ -10,10 +10,7 @@
 
 void yyerror();
 
-enum{
-	INT_TYPE = 1,
-	FLOAT_TYPE
-};
+
 
 %}
 
@@ -32,18 +29,18 @@ newline \n
 
 %%
 
-{number} {strcpy(yylval.sval, yytext);
+{number} {strcpy(yylval.str, yytext);
 	return FLOAT;}
-{integer} {strcpy(yylval.sval, yytext);
+{integer} {strcpy(yylval.str, yytext);
 	return INT;}
-(int)	{yylval.ival = INT_TYPE;
+(int)	{yylval.type = 'i';
 	return TYPE;}
-(float)	{yylval.ival = FLOAT_TYPE;
+(float)	{yylval.type = 'f';
 	return TYPE;}
-{id} 	{strcpy(yylval.sval, yytext);
+{id} 	{strcpy(yylval.str, yytext);
 	return ID;}
 {op} {return *yytext; }
-(=) 	{strcpy(yylval.sval, yytext);
+(=) 	{strcpy(yylval.str, yytext);
 	return ASSIGN;}
 {ws} ;
 {semi} {return *yytext;}
@@ -51,6 +48,7 @@ newline \n
 
 
 %%
+
 /* 파일(입력)의 끝에 호출됨. 1을 반환하면 파싱 종료 */
 int yywrap(void){
 	return 1;
