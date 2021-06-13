@@ -13,9 +13,11 @@ Infix representation을 postfix representation으로 변환
 </ul>
 <h2>빌드</h2>
 ```
+
 $ lex ToPostfix.l
 $ gcc lex.yy.c -o ToPostfix -ll
-```   
+
+```
 <h2>실행</h2>
 <code>$ ./ToPostfix</code>
 <h2>예시</h2>
