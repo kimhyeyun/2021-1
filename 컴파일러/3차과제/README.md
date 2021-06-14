@@ -17,6 +17,8 @@
 * type check -> mismatch 시 warning 
 
 ## 코드 
+ ### Type Checking은 변수 type을 읽어 int 는 i, float는 f를 return. expr에서 각 숫자의 type을 flag에 저장함으로써 식의 전체 type과 변수의 type을 비교함.
+
 ### cal.y
 ```
 def	: TYPE ID {	/* 이미 symbol table에 있는지 확인 */
@@ -71,7 +73,6 @@ def	: TYPE ID {	/* 이미 symbol table에 있는지 확인 */
 	;
 
  ```
- ### Type Checking은 변수 type을 읽어 int 는 i return, float는 f return 받아서 flag에 저장해준다. 
 
 ## 빌드
 ```
