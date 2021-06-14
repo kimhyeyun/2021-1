@@ -57,17 +57,14 @@ char FLOAT_TYPE = 'f';
 
 %%
 
-lines 	: lines stmts
+lines 	: lines stmt$
 	| lines '\n'
 	|
 	;
 
-stmts	: stmt ';'	
+stmt	: def ';'	
 	;
 
-stmt	: def
-	| asign
-	;
 
 def	: TYPE ID {	/* 이미 symbol table에 있는지 확인 */
 			if(lookup($2) != -1){
@@ -97,10 +94,7 @@ def	: TYPE ID {	/* 이미 symbol table에 있는지 확인 */
 					flag = 'i';
 				}
 				
-	;
-
-
-asign	: ID ASSIGN expr {	/* ID가 symbol table에 있는지 확인 */
+	| ID ASSIGN expr {	/* ID가 symbol table에 있는지 확인 */
 				ok = lookup($1);
 				/* 없다면 */
 				if(ok == -1){

@@ -1,4 +1,4 @@
-int a;
+float a;
 int b;
 a = 2 + 6 * 3;	
 b = -a + 2*2 + 10;
