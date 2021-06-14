@@ -109,4 +109,34 @@
  b = t2
  //warning: type mismatch
  ```
+ ### 2021.06.14 변수 선언 동시에 값 할당
+ * input.txt
+ ```
+ int a = 2 + 6 * 3;
+ int b;
+ b = -a + 2 * 2 + 10;
+ ```
+ * result.txt
+ ```
+ t0 = 6 * 3
+ t1 = 2 + t0
+ a = t1
+ t2 = -a;
+ t3 = 2 * 2
+ t4 = t2 + t3
+ t5 = t4 + 10
+ b = t5
+ ```
+ ### 변수를 포함한 식을 입력했는데 변수에 값이 없다면 에러
+ * input.txt
+ ```
+ int a;
+ int b = -a + 2 * 2 + 10;
+ a = 2 + 6 * 3;
+ ```
+ * result.txt
+ ```
+ ERROR!
+ (a doesn't have value)
+ ```
  
