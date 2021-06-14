@@ -16,6 +16,65 @@
 * 이미 선언된 변수가 중복 선언될 경우
 * type check -> mismatch 시 warning 
 
+## 코드 
+Type Checking은 변수 type을 읽어 int 는 i, float는 f를 return. <br>
+expr에서 각 숫자의 type을 flag에 저장함으로써 식의 전체 type과 변수의 type을 비교함.
+
+### cal.y
+```
+def	: TYPE ID {	/* 이미 symbol table에 있는지 확인 */
+			if(lookup($2) != -1){
+			/* 있다면, 이미 선언되었다고 에러 출력 */
+				fprintf(fp, "ERROR!\n(%s is already declared)\n", $2);
+				exit(0);
+			}
+			/* 없으면 추가 */
+			insert_exp($2, $1,"\n");
+		}
+
+	| TYPE ID ASSIGN expr	{	/* 선언과 동시에 값을 넣은 경우 */
+					ok = lookup($2);
+					if(ok != -1){
+						fprintf(fp, "ERROR!\n(%s is already declared)\n", $2);
+						exit(0);
+					}
+
+					insert_exp($2, $1, $4);
+					
+					fprintf(fp, "%s = %s\n", $2, $4);
+					/* 다시 한번 탐색 해야함 */
+					ok = lookup($2);
+					if(flag != symbol_table[ok].type)
+						fprintf(fp, "//warning: type mismatch\n"); 
+
+					flag = 'i';
+				}
+				
+	| ID ASSIGN expr {	/* ID가 symbol table에 있는지 확인 */
+				ok = lookup($1);
+				/* 없다면 */
+				if(ok == -1){
+					fprintf(fp, "ERROR!\n(%s is unknown id)\n", $1);
+					exit(0);
+				}
+				
+				/* 있으면 symbol table에 식 넣어주기 */
+				strcpy(symbol_table[ok].exp, $3);
+
+				/* three-address code 출력 */
+				fprintf(fp, "%s = %s\n", $1, $3);
+
+				/* type mismatch check => expr의 type과 id의 type이 같은지*/
+				if(flag != symbol_table[ok].type)
+					fprintf(fp, "//warning: type mismatch\n");
+
+				flag = 'i';
+				
+			}
+	;
+
+ ```
+
 ## 빌드
 ```
 % flex cal.l
@@ -108,5 +167,35 @@
  t2 = t1 + 15
  b = t2
  //warning: type mismatch
+ ```
+ ### 2021.06.14 변수 선언 동시에 값 할당
+ * input.txt
+ ```
+ int a = 2 + 6 * 3;
+ int b;
+ b = -a + 2 * 2 + 10;
+ ```
+ * result.txt
+ ```
+ t0 = 6 * 3
+ t1 = 2 + t0
+ a = t1
+ t2 = -a;
+ t3 = 2 * 2
+ t4 = t2 + t3
+ t5 = t4 + 10
+ b = t5
+ ```
+ ### 변수를 포함한 식을 입력했는데 변수에 값이 없다면 에러
+ * input.txt
+ ```
+ int a;
+ int b = -a + 2 * 2 + 10;
+ a = 2 + 6 * 3;
+ ```
+ * result.txt
+ ```
+ ERROR!
+ (a doesn't have value)
  ```
  
