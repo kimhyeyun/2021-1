@@ -16,6 +16,63 @@
 * 이미 선언된 변수가 중복 선언될 경우
 * type check -> mismatch 시 warning 
 
+## 코드 
+### cal.y
+```
+def	: TYPE ID {	/* 이미 symbol table에 있는지 확인 */
+			if(lookup($2) != -1){
+			/* 있다면, 이미 선언되었다고 에러 출력 */
+				fprintf(fp, "ERROR!\n(%s is already declared)\n", $2);
+				exit(0);
+			}
+			/* 없으면 추가 */
+			insert_exp($2, $1,"\n");
+		}
+
+	| TYPE ID ASSIGN expr	{	/* 선언과 동시에 값을 넣은 경우 */
+					ok = lookup($2);
+					if(ok != -1){
+						fprintf(fp, "ERROR!\n(%s is already declared)\n", $2);
+						exit(0);
+					}
+
+					insert_exp($2, $1, $4);
+					
+					fprintf(fp, "%s = %s\n", $2, $4);
+					/* 다시 한번 탐색 해야함 */
+					ok = lookup($2);
+					if(flag != symbol_table[ok].type)
+						fprintf(fp, "//warning: type mismatch\n"); 
+
+					flag = 'i';
+				}
+				
+	| ID ASSIGN expr {	/* ID가 symbol table에 있는지 확인 */
+				ok = lookup($1);
+				/* 없다면 */
+				if(ok == -1){
+					fprintf(fp, "ERROR!\n(%s is unknown id)\n", $1);
+					exit(0);
+				}
+				
+				/* 있으면 symbol table에 식 넣어주기 */
+				strcpy(symbol_table[ok].exp, $3);
+
+				/* three-address code 출력 */
+				fprintf(fp, "%s = %s\n", $1, $3);
+
+				/* type mismatch check => expr의 type과 id의 type이 같은지*/
+				if(flag != symbol_table[ok].type)
+					fprintf(fp, "//warning: type mismatch\n");
+
+				flag = 'i';
+				
+			}
+	;
+
+ ```
+ ### Type Checking은 변수 type을 읽어 int 는 i return, float는 f return 받아서 flag에 저장해준다. 
+
 ## 빌드
 ```
 % flex cal.l
