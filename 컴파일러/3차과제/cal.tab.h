@@ -60,9 +60,9 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 37 "cal.y"
+#line 40 "cal.y"
 {
-	char str[512]; /* 식 등*/
+	char str[512]; 	/* 식 등*/
 	char type;	/* type */
 }
 /* Line 1529 of yacc.c.  */
