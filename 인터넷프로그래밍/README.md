@@ -41,7 +41,8 @@ userid  varchar(20),
 pid int,
 pname varchar(120),
 pprice  varchar(100),
-pimage  varchar(100));
+pimage  varchar(100),
+count   int);
 ```
 ### qa Table
 ```
