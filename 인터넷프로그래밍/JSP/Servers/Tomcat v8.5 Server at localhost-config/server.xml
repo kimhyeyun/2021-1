@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector UFIEncoding="UTF-8" connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="First" path="/First" reloadable="true" source="org.eclipse.jst.jee.server:First"/><Context docBase="WEEK10" path="/WEEK10" reloadable="true" source="org.eclipse.jst.jee.server:WEEK10"/><Context docBase="WEEK11" path="/WEEK11" reloadable="true" source="org.eclipse.jst.jee.server:WEEK11"/><Context docBase="WEEK11_LAB" path="/WEEK11_LAB" reloadable="true" source="org.eclipse.jst.jee.server:WEEK11_LAB"/><Context docBase="SimpleJspServletDB" path="/SimpleJspServletDB" reloadable="true" source="org.eclipse.jst.jee.server:SimpleJspServletDB"/><Context docBase="WEEK12" path="/WEEK12" reloadable="true" source="org.eclipse.jst.jee.server:WEEK12"/><Context docBase="FinalProject" path="/FinalProject" reloadable="true" source="org.eclipse.jst.jee.server:FinalProject"/><Context docBase="WEEK13" path="/WEEK13" reloadable="true" source="org.eclipse.jst.jee.server:WEEK13"/><Context docBase="gochang" path="/gochang" reloadable="true" source="org.eclipse.jst.jee.server:gochang"/><Context docBase="Final" path="/Final" reloadable="true" source="org.eclipse.jst.jee.server:Final"/></Host>
+      <Context docBase="Final" path="/Final" reloadable="true" source="org.eclipse.jst.jee.server:Final"/></Host>
     </Engine>
   </Service>
 </Server>

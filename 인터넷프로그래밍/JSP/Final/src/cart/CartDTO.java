@@ -6,6 +6,7 @@ public class CartDTO {
 	private String pname;
 	private int pprice;
 	private String pimage;
+	private int count;
 	
 	public String getUserid() {
 		return userid;
@@ -36,6 +37,12 @@ public class CartDTO {
 	}
 	public void setPimage(String pimage) {
 		this.pimage = pimage;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	

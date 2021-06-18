@@ -62,11 +62,21 @@ public class CartDAO {
 		return cnt;
 	}
 	
-	//cart에 존재>
+	//cart에 존재?
 	public int isProductinCart(UserProduct p) {
 		SqlSession session = sqlMapper.openSession();
 		int succ = 0;
 		succ = session.selectOne("isProductinCart",p);
+		session.close();
+		return succ;
+	}
+	
+	//갯수 중가
+	public int updateProdCnt(UserProduct p) {
+		SqlSession session = sqlMapper.openSession();
+		int succ = 0;
+		succ = session.update("updateProd",p);
+		session.commit();
 		session.close();
 		return succ;
 	}

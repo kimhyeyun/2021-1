@@ -62,13 +62,8 @@ public class cartAddServlet extends HttpServlet {
 
 			CartDAO dao = new CartDAO();
 			int succ = dao.isProductinCart(p);
-			if (succ > 0) {
-				out.println("<script>alert('이미 장바구니에 있습니다.')");
-				out.println("history.back()");
-				out.println("</script>");
-			} else {
+			if(succ <= 0) {
 				ProductDAO pdao = new ProductDAO();
-
 				ProductDTO pdto = pdao.SearchOne(pid);
 				CartDTO dto = new CartDTO();
 				dto.setPid(pid);
@@ -76,12 +71,17 @@ public class cartAddServlet extends HttpServlet {
 				dto.setPprice(pdto.getPprice());
 				dto.setUserid(userid);
 				dto.setPname(pdto.getPname());
-
+				
 				dao.AddCart(dto);
-				out.println("<script>alert('장바구니에 담았습니다.')");
-				out.println("location.href='productDetail.jsp?pid=" + pid + "'");
-				out.println("</script>");
 			}
+			else {
+				dao.updateProdCnt(p);
+			}
+			
+			out.println("<script>('장바구니에 담았습니다.')");
+			out.println("location.href = 'productDetail.jsp?pid="+pid+"'");
+			out.println("</script>");
+	
 		}
 	}
 

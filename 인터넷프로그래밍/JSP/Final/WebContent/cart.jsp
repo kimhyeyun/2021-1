@@ -89,6 +89,8 @@
 									<th scope="col">이미지</th>
 									<th scope="col">상품정보</th>
 									<th scope="col">판매가</th>
+									<th scope="col">수량</th>
+									<th scope="col">합계</th>
 									<th scope="col">삭제</th>
 								</tr>
 							</thead>
@@ -98,6 +100,8 @@
 									<td><img style="width: 80px;" src=<%=list.get(i).getPimage() %>></td>
 									<td><%=list.get(i).getPname() %></td>
 									<td>KRW <%=list.get(i).getPprice() %></td>
+									<td><%=list.get(i).getCount() %></td>
+									<td><%int c = list.get(i).getCount(); int p = list.get(i).getPprice();   %>KRW <%=c*p %></td>
 									<td><a onclick="cartDelete(<%=list.get(i).getPid() %>)" id="delebtn">DELETE</a></td>							
 							</tbody>
 							<%} %>

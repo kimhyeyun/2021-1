@@ -57,7 +57,7 @@ char FLOAT_TYPE = 'f';
 
 %%
 
-lines 	: lines stmt$
+lines 	: lines stmt
 	| lines '\n'
 	|
 	;

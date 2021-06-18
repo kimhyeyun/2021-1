@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.CartMapper">
 	<insert id="cartInsert" parameterType="CartDTO">
-		INSERT INTO cart VALUES(#{userid}, #{pid}, #{pname}, #{pprice}, #{pimage})
+		INSERT INTO cart VALUES(#{userid}, #{pid}, #{pname}, #{pprice}, #{pimage}, 1)
 	</insert>
 	
 	<delete id="cartDelete" parameterType="CartDTO">
@@ -20,5 +20,9 @@
 	<select id="isProductinCart" parameterType="UserProduct" resultType="int">
 		SELECT COUNT(*) FROM cart WHERE userid = #{userid} AND pid = #{pid}
 	</select>
+	
+	<update id="updateProd" parameterType="UserProduct">
+		UPDATE cart SET count = count + 1 WHERE userid = #{userid} AND pid = #{pid}
+	</update>
 
 </mapper>
